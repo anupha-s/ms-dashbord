@@ -9,7 +9,9 @@
       "dealer": "Dealer D",
       "exteriorColor": "Polymetal Gray",
       "interiorColor": "Black",
-      "package": "None"
+      "package": "None",
+      "model": "MAZDA6e",
+      "range": "Long Range 552 km (WLTP)"
     },
     {
       "bookingAt": "2026-01-15T15:00:00Z",
@@ -20,7 +22,9 @@
       "dealer": "Dealer A",
       "exteriorColor": "Snowflake White Pearl",
       "interiorColor": "Black",
-      "package": "A"
+      "package": "A",
+      "model": "MAZDA6e",
+      "range": "Standard Range 430 km (WLTP)"
     },
     {
       "bookingAt": "2026-01-17T09:00:00Z",
@@ -31,7 +35,9 @@
       "dealer": "Dealer I",
       "exteriorColor": "Jet Black",
       "interiorColor": "Tan",
-      "package": "A"
+      "package": "A",
+      "model": "MAZDA6e",
+      "range": "Long Range 552 km (WLTP)"
     },
     {
       "bookingAt": "2025-12-06T09:00:00Z",
@@ -42,7 +48,9 @@
       "dealer": "Dealer C",
       "exteriorColor": "Zircon Sand",
       "interiorColor": "Tan",
-      "package": "B"
+      "package": "B",
+      "model": "MAZDA6e",
+      "range": "Standard Range 430 km (WLTP)"
     },
     {
       "bookingAt": "2025-12-14T10:00:00Z",
@@ -53,7 +61,9 @@
       "dealer": "Dealer B",
       "exteriorColor": "Zircon Sand",
       "interiorColor": "Black",
-      "package": "B"
+      "package": "B",
+      "model": "MAZDA6e",
+      "range": "Long Range 552 km (WLTP)"
     },
     {
       "bookingAt": "2025-12-04T09:00:00Z",
@@ -64,7 +74,9 @@
       "dealer": "Dealer H",
       "exteriorColor": "Machine Gray",
       "interiorColor": "Tan",
-      "package": "A"
+      "package": "A",
+      "model": "MAZDA6e",
+      "range": "Standard Range 430 km (WLTP)"
     },
     {
       "bookingAt": "2026-01-20T18:00:00Z",
@@ -75,7 +87,9 @@
       "dealer": "Dealer F",
       "exteriorColor": "Jet Black",
       "interiorColor": "Black",
-      "package": "A"
+      "package": "A",
+      "model": "MAZDA6e",
+      "range": "Long Range 552 km (WLTP)"
     },
     {
       "bookingAt": "2025-11-11T12:00:00Z",
@@ -86,7 +100,9 @@
       "dealer": "Dealer B",
       "exteriorColor": "Zircon Sand",
       "interiorColor": "Tan",
-      "package": "B"
+      "package": "B",
+      "model": "MAZDA6e",
+      "range": "Standard Range 430 km (WLTP)"
     },
     {
       "bookingAt": "2025-12-18T14:00:00Z",
@@ -97,7 +113,9 @@
       "dealer": "Dealer D",
       "exteriorColor": "Platinum Quartz",
       "interiorColor": "Black",
-      "package": "None"
+      "package": "None",
+      "model": "MAZDA6e",
+      "range": "Long Range 552 km (WLTP)"
     },
     {
       "bookingAt": "2025-12-02T11:00:00Z",
@@ -108,7 +126,9 @@
       "dealer": "Dealer H",
       "exteriorColor": "Zircon Sand",
       "interiorColor": "Tan",
-      "package": "None"
+      "package": "None",
+      "model": "MAZDA6e",
+      "range": "Standard Range 430 km (WLTP)"
     },
     {
       "bookingAt": "2026-01-27T14:00:00Z",
@@ -119,7 +139,9 @@
       "dealer": "Dealer A",
       "exteriorColor": "Jet Black",
       "interiorColor": "Black",
-      "package": "B"
+      "package": "B",
+      "model": "MAZDA6e",
+      "range": "Long Range 552 km (WLTP)"
     },
     {
       "bookingAt": "2025-11-09T12:00:00Z",
@@ -130,7 +152,9 @@
       "dealer": "Dealer J",
       "exteriorColor": "Soul Red Crystal",
       "interiorColor": "Black",
-      "package": "None"
+      "package": "None",
+      "model": "MAZDA6e",
+      "range": "Standard Range 430 km (WLTP)"
     },
     {
       "bookingAt": "2026-01-22T16:00:00Z",
@@ -141,7 +165,9 @@
       "dealer": "Dealer C",
       "exteriorColor": "Platinum Quartz",
       "interiorColor": "Black",
-      "package": "A"
+      "package": "A",
+      "model": "MAZDA6e",
+      "range": "Long Range 552 km (WLTP)"
     },
     {
       "bookingAt": "2025-12-04T18:00:00Z",
@@ -152,7 +178,9 @@
       "dealer": "Dealer G",
       "exteriorColor": "Zircon Sand",
       "interiorColor": "Tan",
-      "package": "A"
+      "package": "A",
+      "model": "MAZDA6e",
+      "range": "Standard Range 430 km (WLTP)"
     },
     {
       "bookingAt": "2026-01-03T10:00:00Z",
@@ -163,7 +191,9 @@
       "dealer": "Dealer A",
       "exteriorColor": "Machine Gray",
       "interiorColor": "Black",
-      "package": "None"
+      "package": "None",
+      "model": "MAZDA6e",
+      "range": "Long Range 552 km (WLTP)"
     },
     {
       "bookingAt": "2026-01-16T10:00:00Z",
@@ -174,7 +204,9 @@
       "dealer": "Dealer G",
       "exteriorColor": "Zircon Sand",
       "interiorColor": "Tan",
-      "package": "None"
+      "package": "None",
+      "model": "MAZDA6e",
+      "range": "Standard Range 430 km (WLTP)"
     },
     {
       "bookingAt": "2025-11-02T19:00:00Z",
@@ -185,7 +217,9 @@
       "dealer": "Dealer B",
       "exteriorColor": "Platinum Quartz",
       "interiorColor": "Tan",
-      "package": "A"
+      "package": "A",
+      "model": "MAZDA6e",
+      "range": "Long Range 552 km (WLTP)"
     },
     {
       "bookingAt": "2025-11-21T16:00:00Z",
@@ -196,7 +230,9 @@
       "dealer": "Dealer A",
       "exteriorColor": "Platinum Quartz",
       "interiorColor": "Black",
-      "package": "None"
+      "package": "None",
+      "model": "MAZDA6e",
+      "range": "Standard Range 430 km (WLTP)"
     },
     {
       "bookingAt": "2026-01-21T17:00:00Z",
@@ -207,7 +243,9 @@
       "dealer": "Dealer J",
       "exteriorColor": "Jet Black",
       "interiorColor": "Black",
-      "package": "B"
+      "package": "B",
+      "model": "MAZDA6e",
+      "range": "Long Range 552 km (WLTP)"
     },
     {
       "bookingAt": "2026-01-07T09:00:00Z",
@@ -218,7 +256,9 @@
       "dealer": "Dealer J",
       "exteriorColor": "Soul Red Crystal",
       "interiorColor": "Tan",
-      "package": "A"
+      "package": "A",
+      "model": "MAZDA6e",
+      "range": "Standard Range 430 km (WLTP)"
     },
     {
       "bookingAt": "2025-12-10T12:00:00Z",
@@ -229,7 +269,9 @@
       "dealer": "Dealer A",
       "exteriorColor": "Jet Black",
       "interiorColor": "Black",
-      "package": "A"
+      "package": "A",
+      "model": "MAZDA6e",
+      "range": "Long Range 552 km (WLTP)"
     },
     {
       "bookingAt": "2026-01-08T11:00:00Z",
@@ -240,7 +282,9 @@
       "dealer": "Dealer C",
       "exteriorColor": "Ceramic Metallic",
       "interiorColor": "Black",
-      "package": "B"
+      "package": "B",
+      "model": "MAZDA6e",
+      "range": "Standard Range 430 km (WLTP)"
     },
     {
       "bookingAt": "2025-12-25T12:00:00Z",
@@ -251,7 +295,9 @@
       "dealer": "Dealer I",
       "exteriorColor": "Jet Black",
       "interiorColor": "Tan",
-      "package": "B"
+      "package": "B",
+      "model": "MAZDA6e",
+      "range": "Long Range 552 km (WLTP)"
     },
     {
       "bookingAt": "2026-01-06T16:00:00Z",
@@ -262,7 +308,9 @@
       "dealer": "Dealer B",
       "exteriorColor": "Jet Black",
       "interiorColor": "Black",
-      "package": "A"
+      "package": "A",
+      "model": "MAZDA6e",
+      "range": "Standard Range 430 km (WLTP)"
     },
     {
       "bookingAt": "2026-01-15T17:00:00Z",
@@ -273,7 +321,9 @@
       "dealer": "Dealer D",
       "exteriorColor": "Jet Black",
       "interiorColor": "Black",
-      "package": "A"
+      "package": "A",
+      "model": "MAZDA6e",
+      "range": "Long Range 552 km (WLTP)"
     },
     {
       "bookingAt": "2025-11-09T09:00:00Z",
@@ -284,7 +334,9 @@
       "dealer": "Dealer F",
       "exteriorColor": "Machine Gray",
       "interiorColor": "Black",
-      "package": "B"
+      "package": "B",
+      "model": "MAZDA6e",
+      "range": "Standard Range 430 km (WLTP)"
     },
     {
       "bookingAt": "2026-01-09T11:00:00Z",
@@ -295,7 +347,9 @@
       "dealer": "Dealer J",
       "exteriorColor": "Ceramic Metallic",
       "interiorColor": "Black",
-      "package": "B"
+      "package": "B",
+      "model": "MAZDA6e",
+      "range": "Long Range 552 km (WLTP)"
     },
     {
       "bookingAt": "2025-11-13T10:00:00Z",
@@ -306,7 +360,9 @@
       "dealer": "Dealer G",
       "exteriorColor": "Soul Red Crystal",
       "interiorColor": "Tan",
-      "package": "B"
+      "package": "B",
+      "model": "MAZDA6e",
+      "range": "Standard Range 430 km (WLTP)"
     },
     {
       "bookingAt": "2026-01-26T19:00:00Z",
@@ -317,7 +373,9 @@
       "dealer": "Dealer B",
       "exteriorColor": "Snowflake White Pearl",
       "interiorColor": "Tan",
-      "package": "None"
+      "package": "None",
+      "model": "MAZDA6e",
+      "range": "Long Range 552 km (WLTP)"
     },
     {
       "bookingAt": "2025-12-02T12:00:00Z",
@@ -328,7 +386,9 @@
       "dealer": "Dealer D",
       "exteriorColor": "Ceramic Metallic",
       "interiorColor": "Black",
-      "package": "B"
+      "package": "B",
+      "model": "MAZDA6e",
+      "range": "Standard Range 430 km (WLTP)"
     },
     {
       "bookingAt": "2025-12-30T12:00:00Z",
@@ -339,7 +399,9 @@
       "dealer": "Dealer B",
       "exteriorColor": "Ceramic Metallic",
       "interiorColor": "Black",
-      "package": "A"
+      "package": "A",
+      "model": "MAZDA6e",
+      "range": "Long Range 552 km (WLTP)"
     },
     {
       "bookingAt": "2025-11-12T12:00:00Z",
@@ -350,7 +412,9 @@
       "dealer": "Dealer C",
       "exteriorColor": "Zircon Sand",
       "interiorColor": "Tan",
-      "package": "B"
+      "package": "B",
+      "model": "MAZDA6e",
+      "range": "Standard Range 430 km (WLTP)"
     },
     {
       "bookingAt": "2025-11-08T11:00:00Z",
@@ -361,7 +425,9 @@
       "dealer": "Dealer G",
       "exteriorColor": "Snowflake White Pearl",
       "interiorColor": "Tan",
-      "package": "B"
+      "package": "B",
+      "model": "MAZDA6e",
+      "range": "Long Range 552 km (WLTP)"
     },
     {
       "bookingAt": "2025-12-25T17:00:00Z",
@@ -372,7 +438,9 @@
       "dealer": "Dealer H",
       "exteriorColor": "Polymetal Gray",
       "interiorColor": "Black",
-      "package": "B"
+      "package": "B",
+      "model": "MAZDA6e",
+      "range": "Standard Range 430 km (WLTP)"
     },
     {
       "bookingAt": "2026-01-14T17:00:00Z",
@@ -383,7 +451,9 @@
       "dealer": "Dealer A",
       "exteriorColor": "Soul Red Crystal",
       "interiorColor": "Black",
-      "package": "A"
+      "package": "A",
+      "model": "MAZDA6e",
+      "range": "Long Range 552 km (WLTP)"
     },
     {
       "bookingAt": "2026-01-04T17:00:00Z",
@@ -394,7 +464,9 @@
       "dealer": "Dealer C",
       "exteriorColor": "Snowflake White Pearl",
       "interiorColor": "Black",
-      "package": "A"
+      "package": "A",
+      "model": "MAZDA6e",
+      "range": "Standard Range 430 km (WLTP)"
     },
     {
       "bookingAt": "2025-11-09T19:00:00Z",
@@ -405,7 +477,9 @@
       "dealer": "Dealer D",
       "exteriorColor": "Zircon Sand",
       "interiorColor": "Black",
-      "package": "None"
+      "package": "None",
+      "model": "MAZDA6e",
+      "range": "Long Range 552 km (WLTP)"
     },
     {
       "bookingAt": "2026-01-16T09:00:00Z",
@@ -416,7 +490,9 @@
       "dealer": "Dealer J",
       "exteriorColor": "Machine Gray",
       "interiorColor": "Tan",
-      "package": "None"
+      "package": "None",
+      "model": "MAZDA6e",
+      "range": "Standard Range 430 km (WLTP)"
     },
     {
       "bookingAt": "2026-01-06T14:00:00Z",
@@ -427,7 +503,9 @@
       "dealer": "Dealer E",
       "exteriorColor": "Jet Black",
       "interiorColor": "Tan",
-      "package": "A"
+      "package": "A",
+      "model": "MAZDA6e",
+      "range": "Long Range 552 km (WLTP)"
     },
     {
       "bookingAt": "2025-11-17T19:00:00Z",
@@ -438,7 +516,9 @@
       "dealer": "Dealer E",
       "exteriorColor": "Ceramic Metallic",
       "interiorColor": "Tan",
-      "package": "A"
+      "package": "A",
+      "model": "MAZDA6e",
+      "range": "Standard Range 430 km (WLTP)"
     },
     {
       "bookingAt": "2026-01-19T18:00:00Z",
@@ -449,7 +529,9 @@
       "dealer": "Dealer B",
       "exteriorColor": "Machine Gray",
       "interiorColor": "Black",
-      "package": "None"
+      "package": "None",
+      "model": "MAZDA6e",
+      "range": "Long Range 552 km (WLTP)"
     },
     {
       "bookingAt": "2025-12-15T10:00:00Z",
@@ -460,7 +542,9 @@
       "dealer": "Dealer D",
       "exteriorColor": "Soul Red Crystal",
       "interiorColor": "Tan",
-      "package": "A"
+      "package": "A",
+      "model": "MAZDA6e",
+      "range": "Standard Range 430 km (WLTP)"
     },
     {
       "bookingAt": "2026-01-30T13:00:00Z",
@@ -471,7 +555,9 @@
       "dealer": "Dealer J",
       "exteriorColor": "Snowflake White Pearl",
       "interiorColor": "Tan",
-      "package": "None"
+      "package": "None",
+      "model": "MAZDA6e",
+      "range": "Long Range 552 km (WLTP)"
     },
     {
       "bookingAt": "2025-12-04T10:00:00Z",
@@ -482,7 +568,9 @@
       "dealer": "Dealer B",
       "exteriorColor": "Polymetal Gray",
       "interiorColor": "Tan",
-      "package": "B"
+      "package": "B",
+      "model": "MAZDA6e",
+      "range": "Standard Range 430 km (WLTP)"
     },
     {
       "bookingAt": "2025-12-14T12:00:00Z",
@@ -493,7 +581,9 @@
       "dealer": "Dealer E",
       "exteriorColor": "Ceramic Metallic",
       "interiorColor": "Tan",
-      "package": "A"
+      "package": "A",
+      "model": "MAZDA6e",
+      "range": "Long Range 552 km (WLTP)"
     },
     {
       "bookingAt": "2025-12-06T09:00:00Z",
@@ -504,7 +594,9 @@
       "dealer": "Dealer A",
       "exteriorColor": "Soul Red Crystal",
       "interiorColor": "Black",
-      "package": "None"
+      "package": "None",
+      "model": "MAZDA6e",
+      "range": "Standard Range 430 km (WLTP)"
     },
     {
       "bookingAt": "2025-12-27T17:00:00Z",
@@ -515,7 +607,9 @@
       "dealer": "Dealer G",
       "exteriorColor": "Snowflake White Pearl",
       "interiorColor": "Black",
-      "package": "A"
+      "package": "A",
+      "model": "MAZDA6e",
+      "range": "Long Range 552 km (WLTP)"
     },
     {
       "bookingAt": "2025-11-05T14:00:00Z",
@@ -526,7 +620,9 @@
       "dealer": "Dealer J",
       "exteriorColor": "Polymetal Gray",
       "interiorColor": "Tan",
-      "package": "A"
+      "package": "A",
+      "model": "MAZDA6e",
+      "range": "Standard Range 430 km (WLTP)"
     },
     {
       "bookingAt": "2025-12-17T09:00:00Z",
@@ -537,7 +633,9 @@
       "dealer": "Dealer F",
       "exteriorColor": "Jet Black",
       "interiorColor": "Black",
-      "package": "None"
+      "package": "None",
+      "model": "MAZDA6e",
+      "range": "Long Range 552 km (WLTP)"
     },
     {
       "bookingAt": "2026-01-11T15:00:00Z",
@@ -548,7 +646,9 @@
       "dealer": "Dealer J",
       "exteriorColor": "Polymetal Gray",
       "interiorColor": "Black",
-      "package": "A"
+      "package": "A",
+      "model": "MAZDA6e",
+      "range": "Standard Range 430 km (WLTP)"
     }
   ]
 }

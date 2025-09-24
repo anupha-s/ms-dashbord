@@ -11,15 +11,17 @@
 </template>
 
 <script setup lang="ts">
-import Chart from './Chart.vue';
+import { computed } from 'vue'
+import Chart from './Chart.vue'
 
-const props = defineProps<{ months: {label:string, value:number}[], total:number }>();
+const props = defineProps<{ months: {label:string, value:number}[], total:number }>()
 
-const option = {
+// ทำ option ให้ reactive -> กราฟจะตาม months เสมอ
+const option = computed(() => ({
   grid: { left: 40, right: 20, top: 10, bottom: 30 },
-  xAxis: { type: 'category', data: props.months.map(m=>m.label) },
+  xAxis: { type: 'category', data: props.months.map(m => m.label) },
   yAxis: { type: 'value' },
-  series: [{ type:'line', data: props.months.map(m=>m.value), smooth:true }],
+  series: [{ type: 'line', data: props.months.map(m => m.value), smooth: true, symbolSize: 6 }],
   tooltip: { trigger: 'axis' }
-};
+}))
 </script>
