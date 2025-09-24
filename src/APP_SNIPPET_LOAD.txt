@@ -1,0 +1,17 @@
+// ---- load source data and normalize if using new API structure ----
+import jsonData from './data/mock.json';
+import { mockData as fallback } from './data/mock';
+import { normalizeApiRecords } from './data/normalize';
+import type { ApiRecord, Prebooking } from './types';
+
+function toBase(data: any): Prebooking[] {
+  if (Array.isArray(data)) {
+    return normalizeApiRecords(data as ApiRecord[]);
+  }
+  if (data?.prebookings?.length) {
+    return data.prebookings as Prebooking[];
+  }
+  return fallback as Prebooking[];
+}
+
+const base: Prebooking[] = toBase(jsonData as any);

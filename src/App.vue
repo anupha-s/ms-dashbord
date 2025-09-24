@@ -34,6 +34,7 @@ import { ref, computed } from 'vue';
 import dayjs from 'dayjs';
 import * as XLSX from 'xlsx';
 
+// Components
 import Filters from './components/Filters.vue';
 import KPI from './components/KPI.vue';
 import StackedColor from './components/StackedColor.vue';
@@ -42,17 +43,24 @@ import PackagePie from './components/PackagePie.vue';
 import DataTable from './components/DataTable.vue';
 import DetailModal from './components/DetailModal.vue';
 
-// Load data
-import jsonData from './data/mock.json';
-import { mockData as fallback } from './data/mock';
+// Utils & Types
 import { uniq, groupBy, withinRange, paginate, formatDateTime } from './utils';
-import type { Prebooking } from './types';
+import { normalizeApiRecords } from './data/normalize';
+import type { ApiRecord, Prebooking } from './types';
 
-// ---------------- Data source ----------------
-const base: Prebooking[] = (jsonData?.prebookings?.length ? jsonData.prebookings : fallback) as unknown as Prebooking[];
+// -------- Load data (supports both new API array & old { prebookings: [...] }) --------
+import apiRows from './data/mock.api.json';     // << ใช้ไฟล์โครงสร้างใหม่เป็นค่าเริ่ม
+import { mockData as fallback } from './data/mock';
+
+function toBase(data: any): Prebooking[] {
+  if (Array.isArray(data)) return normalizeApiRecords(data as ApiRecord[]);
+  if (data?.prebookings?.length) return data.prebookings as Prebooking[];
+  return fallback as Prebooking[];
+}
+const base: Prebooking[] = toBase(apiRows);
 const raw = ref<Prebooking[]>(base);
 
-// ---------------- Filters default ----------------
+// -------- ค่าดีฟอลต์ช่วงวันที่ (from=วันแรกที่มีข้อมูล, to=max(วันนี้, วันที่ล่าสุดในข้อมูล)) --------
 const dataMin = raw.value.length ? dayjs(Math.min(...raw.value.map(r => dayjs(r.bookingAt).valueOf()))) : dayjs();
 const dataMax = raw.value.length ? dayjs(Math.max(...raw.value.map(r => dayjs(r.bookingAt).valueOf()))) : dayjs();
 const realToday = dayjs();
@@ -65,17 +73,19 @@ function apply(v:any){
   if (v.from && v.to && dayjs(v.from).isAfter(dayjs(v.to))) {
     const tmp = v.from; v.from = v.to; v.to = tmp;
   }
-  filters.value = v; page.value = 1; userApplied.value = true;
+  filters.value = v;
+  page.value = 1;
+  userApplied.value = true;
 }
 
-// ---------------- Options for dropdowns ----------------
+// -------- Dropdown options --------
 const options = {
   extColors: uniq(raw.value.map(r=>r.exteriorColor)),
   intColors: uniq(raw.value.map(r=>r.interiorColor)),
   dealers:   uniq(raw.value.map(r=>r.dealer))
 };
 
-// ---------------- Filtered rows ----------------
+// -------- Filter rows by current filters --------
 const filtered = computed(()=> raw.value.filter(r=>{
   if(!withinRange(r, filters.value.from, filters.value.to)) return false;
   if(filters.value.extColor && r.exteriorColor !== filters.value.extColor) return false;
@@ -84,7 +94,7 @@ const filtered = computed(()=> raw.value.filter(r=>{
   return true;
 }));
 
-// ---------------- Month series (dynamic) ----------------
+// -------- Dynamic month series for KPI (3 months initially, else full range) --------
 function monthLabelsBetween(fromISO:string, toISO:string){
   let cur = dayjs(fromISO).startOf('month');
   const end = dayjs(toISO).startOf('month');
@@ -109,7 +119,7 @@ const monthSeries = computed(()=>{
   return labels.map(label => ({ label, value: byMonth[label]?.length ?? 0 }));
 });
 
-// ---------------- Aggregations for other charts ----------------
+// -------- Aggregations for other charts --------
 const colorCats = computed(()=> uniq(filtered.value.map(r=>r.exteriorColor)));
 const colorBlack = computed(()=> colorCats.value.map(c=> filtered.value.filter(r=> r.exteriorColor===c && r.interiorColor==='Black').length));
 const colorTan   = computed(()=> colorCats.value.map(c=> filtered.value.filter(r=> r.exteriorColor===c && r.interiorColor==='Tan').length));
@@ -126,7 +136,7 @@ const pkgPie = computed(()=>{
   return Object.entries(g).map(([name, items])=>({ name: name==='None'?'No Package': 'Package '+name, value: (items as any[]).length }));
 });
 
-// ---------------- Sorting for table ----------------
+// -------- Sorting (default: bookingAt desc = ล่าสุดก่อน) --------
 type SortKey = 'bookingAt'|'bookingNo'|'mazdaId'|'firstName'|'lastName'|'dealer';
 type SortDir = 'asc'|'desc';
 const sort = ref<{ key: SortKey, dir: SortDir }>({ key: 'bookingAt', dir: 'desc' });
@@ -149,7 +159,7 @@ const sorted = computed(()=>{
   return arr;
 });
 
-// ---------------- Pagination + export ----------------
+// -------- Pagination + Export --------
 const page = ref(1);
 const paged = computed(()=> paginate(sorted.value, page.value, 10));
 
@@ -167,7 +177,8 @@ function exportExcel(){
     'Model': r.model || '',
     'Range': r.range || '',
     'Email': r.email || '',
-    'Phone': r.phone || ''
+    'Phone': r.phone || '',
+    'Status': r.status || '',
   }));
   const wb = XLSX.utils.book_new();
   const ws = XLSX.utils.json_to_sheet(data);
@@ -175,7 +186,7 @@ function exportExcel(){
   XLSX.writeFile(wb, 'prebookings.xlsx');
 }
 
-// ---------------- Detail modal ----------------
+// -------- Detail modal --------
 const showDetail = ref(false);
 const selected = ref<Prebooking | null>(null);
 function onView(r: Prebooking){
