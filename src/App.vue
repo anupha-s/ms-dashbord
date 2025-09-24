@@ -18,7 +18,9 @@
       :items="paged.items"
       :page="page"
       :totalPages="paged.totalPages"
-      @change-page="page=$event"
+      :sort="sort"
+      @sort-change="sort = $event; page = 1"
+      @change-page="page = $event"
       @export-excel="exportExcel"
       @view="onView"
     />
@@ -31,6 +33,7 @@
 import { ref, computed } from 'vue';
 import dayjs from 'dayjs';
 import * as XLSX from 'xlsx';
+
 import Filters from './components/Filters.vue';
 import KPI from './components/KPI.vue';
 import StackedColor from './components/StackedColor.vue';
@@ -45,37 +48,34 @@ import { mockData as fallback } from './data/mock';
 import { uniq, groupBy, withinRange, paginate, formatDateTime } from './utils';
 import type { Prebooking } from './types';
 
+// ---------------- Data source ----------------
 const base: Prebooking[] = (jsonData?.prebookings?.length ? jsonData.prebookings : fallback) as unknown as Prebooking[];
 const raw = ref<Prebooking[]>(base);
 
-// --- Compute data min/max ---
+// ---------------- Filters default ----------------
 const dataMin = raw.value.length ? dayjs(Math.min(...raw.value.map(r => dayjs(r.bookingAt).valueOf()))) : dayjs();
 const dataMax = raw.value.length ? dayjs(Math.max(...raw.value.map(r => dayjs(r.bookingAt).valueOf()))) : dayjs();
-
-// Effective "today" for default display = max(วันนี้, วันที่ล่าสุดในข้อมูล)
 const realToday = dayjs();
 const initialFrom = dataMin.startOf('day').format('YYYY-MM-DD');
 const initialTo   = (dataMax.isAfter(realToday) ? dataMax : realToday).startOf('day').format('YYYY-MM-DD');
 
-// --- Filters default ---
 const filters = ref({ from: initialFrom, to: initialTo, extColor: '', intColor: '', dealer: '' });
-
+const userApplied = ref(false);
 function apply(v:any){
-  // auto-fix wrong order (if from > to, swap)
   if (v.from && v.to && dayjs(v.from).isAfter(dayjs(v.to))) {
     const tmp = v.from; v.from = v.to; v.to = tmp;
   }
-  filters.value = v; page.value = 1;
+  filters.value = v; page.value = 1; userApplied.value = true;
 }
 
-// Options
+// ---------------- Options for dropdowns ----------------
 const options = {
   extColors: uniq(raw.value.map(r=>r.exteriorColor)),
   intColors: uniq(raw.value.map(r=>r.interiorColor)),
   dealers:   uniq(raw.value.map(r=>r.dealer))
 };
 
-// Filtered data
+// ---------------- Filtered rows ----------------
 const filtered = computed(()=> raw.value.filter(r=>{
   if(!withinRange(r, filters.value.from, filters.value.to)) return false;
   if(filters.value.extColor && r.exteriorColor !== filters.value.extColor) return false;
@@ -84,7 +84,7 @@ const filtered = computed(()=> raw.value.filter(r=>{
   return true;
 }));
 
-// ---- Dynamic month series ----
+// ---------------- Month series (dynamic) ----------------
 function monthLabelsBetween(fromISO:string, toISO:string){
   let cur = dayjs(fromISO).startOf('month');
   const end = dayjs(toISO).startOf('month');
@@ -97,31 +97,23 @@ function monthLabelsBetween(fromISO:string, toISO:string){
 }
 
 const monthSeries = computed(()=>{
-  const isDefaultRange =
-    filters.value.from === initialFrom &&
-    filters.value.to === initialTo;
-
   let labels:string[];
-  if (isDefaultRange) {
-    // Initial view -> show last 3 months counting back from initialTo
+  if (userApplied.value) {
+    labels = monthLabelsBetween(filters.value.from, filters.value.to);
+  } else {
     const toMoment = dayjs(initialTo);
     const start3 = toMoment.startOf('month').subtract(2,'month');
     labels = monthLabelsBetween(start3.format('YYYY-MM-DD'), toMoment.format('YYYY-MM-DD'));
-  } else {
-    // User-customized dates -> show ALL months between from..to (inclusive)
-    labels = monthLabelsBetween(filters.value.from, filters.value.to);
   }
-
   const byMonth = groupBy(filtered.value, r=> dayjs(r.bookingAt).format('MMM-YY'));
   return labels.map(label => ({ label, value: byMonth[label]?.length ?? 0 }));
 });
 
-// Color stacked
+// ---------------- Aggregations for other charts ----------------
 const colorCats = computed(()=> uniq(filtered.value.map(r=>r.exteriorColor)));
 const colorBlack = computed(()=> colorCats.value.map(c=> filtered.value.filter(r=> r.exteriorColor===c && r.interiorColor==='Black').length));
 const colorTan   = computed(()=> colorCats.value.map(c=> filtered.value.filter(r=> r.exteriorColor===c && r.interiorColor==='Tan').length));
 
-// Dealer bar
 const byDealer = computed(()=>{
   const g = groupBy(filtered.value, r=> r.dealer);
   const labels = Object.keys(g).sort((a,b)=> g[b].length - g[a].length);
@@ -129,18 +121,40 @@ const byDealer = computed(()=>{
   return { labels, values };
 });
 
-// Packages pie
 const pkgPie = computed(()=>{
   const g = groupBy(filtered.value, r=> r.package);
   return Object.entries(g).map(([name, items])=>({ name: name==='None'?'No Package': 'Package '+name, value: (items as any[]).length }));
 });
 
-// Pagination + export
+// ---------------- Sorting for table ----------------
+type SortKey = 'bookingAt'|'bookingNo'|'mazdaId'|'firstName'|'lastName'|'dealer';
+type SortDir = 'asc'|'desc';
+const sort = ref<{ key: SortKey, dir: SortDir }>({ key: 'bookingAt', dir: 'desc' });
+
+const sorted = computed(()=>{
+  const arr = [...filtered.value];
+  const dir = sort.value.dir === 'asc' ? 1 : -1;
+  const cmp = (a:any,b:any)=> (a>b?1:a<b?-1:0) * dir;
+  arr.sort((a:any,b:any)=>{
+    switch(sort.value.key){
+      case 'bookingAt': return ((new Date(a.bookingAt)).getTime() - (new Date(b.bookingAt)).getTime()) * dir;
+      case 'bookingNo': return cmp(a.bookingNo, b.bookingNo);
+      case 'mazdaId':   return cmp(a.mazdaId, b.mazdaId);
+      case 'firstName': return cmp(a.firstName, b.firstName);
+      case 'lastName':  return cmp(a.lastName, b.lastName);
+      case 'dealer':    return cmp(a.dealer, b.dealer);
+      default: return 0;
+    }
+  });
+  return arr;
+});
+
+// ---------------- Pagination + export ----------------
 const page = ref(1);
-const paged = computed(()=> paginate(filtered.value, page.value, 10));
+const paged = computed(()=> paginate(sorted.value, page.value, 10));
 
 function exportExcel(){
-  const data = filtered.value.map(r=>({
+  const data = sorted.value.map(r=>({
     'Booking At': formatDateTime(r.bookingAt),
     'Booking No': r.bookingNo,
     'Mazda ID': r.mazdaId,
@@ -150,10 +164,10 @@ function exportExcel(){
     'Exterior Color': r.exteriorColor,
     'Interior Color': r.interiorColor,
     'Package': r.package,
-    'Email': r.email || '',
-    'Phone': r.phone || '',
     'Model': r.model || '',
-    'Range': r.range || ''
+    'Range': r.range || '',
+    'Email': r.email || '',
+    'Phone': r.phone || ''
   }));
   const wb = XLSX.utils.book_new();
   const ws = XLSX.utils.json_to_sheet(data);
@@ -161,6 +175,7 @@ function exportExcel(){
   XLSX.writeFile(wb, 'prebookings.xlsx');
 }
 
+// ---------------- Detail modal ----------------
 const showDetail = ref(false);
 const selected = ref<Prebooking | null>(null);
 function onView(r: Prebooking){

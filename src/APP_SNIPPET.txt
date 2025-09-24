@@ -1,0 +1,24 @@
+// --- Sorting state (default: วันล่าสุดก่อน) ---
+const sort = ref<{ key: 'bookingAt'|'bookingNo'|'mazdaId'|'firstName'|'lastName'|'dealer', dir:'asc'|'desc' }>({
+  key: 'bookingAt', dir: 'desc'
+});
+
+const sorted = computed(()=>{
+  const arr = [...filtered.value];
+  const dir = sort.value.dir === 'asc' ? 1 : -1;
+  const cmp = (a:any,b:any)=> (a>b?1:a<b?-1:0) * dir;
+  arr.sort((a,b)=>{
+    switch(sort.value.key){
+      case 'bookingAt': return ((new Date(a.bookingAt)).getTime() - (new Date(b.bookingAt)).getTime()) * dir;
+      case 'bookingNo': return cmp(a.bookingNo, b.bookingNo);
+      case 'mazdaId':   return cmp(a.mazdaId, b.mazdaId);
+      case 'firstName': return cmp(a.firstName, b.firstName);
+      case 'lastName':  return cmp(a.lastName, b.lastName);
+      case 'dealer':    return cmp(a.dealer, b.dealer);
+      default: return 0;
+    }
+  });
+  return arr;
+});
+
+const paged = computed(()=> paginate(sorted.value, page.value, 10));

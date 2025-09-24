@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="label">ยอดจองสิทธิ์ตามข้อเสนอพิเศษ</div>
-    <Chart :option="option" height="280px" :autoHover="true" :hoverEveryMs="3000" />
+    <Chart :option="option" height="280px" :autoHover="true" :hoverEveryMs="6000" />
   </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="label">ยอดจองสิทธิ์ตามสีภายนอกและภายใน</div>
-    <Chart :option="option" height="320px" :autoHover="true" :hoverEveryMs="3000" />
+    <Chart :option="option" height="320px" :autoHover="true" :hoverEveryMs="6000" />
   </div>
 </template>
 

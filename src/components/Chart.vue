@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<{
   width: '100%',
   height: '240px',
   autoHover: false,
-  hoverEveryMs: 3000
+  hoverEveryMs: 6000
 });
 
 const refEl = ref<HTMLDivElement|null>(null);

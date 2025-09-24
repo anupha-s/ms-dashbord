@@ -5,7 +5,7 @@
       <div class="badge">{{ total }}</div>
     </div>
     <div>
-      <Chart :option="option" height="120px" :autoHover="true" :hoverEveryMs="3000" />
+      <Chart :option="option" height="120px" :autoHover="true" :hoverEveryMs="6000" />
     </div>
   </div>
 </template>
